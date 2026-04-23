@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Runtime state (contains session metadata + local paths)
+sessions-*.json
+logs/
+_inbox/
+_outbox/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local config (copy config.example.json -> config.json)
+config.json
+config.json.bak.*
+
+# Worktrees / generated plists
+.worktrees/
+launchd/com.*.plist
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
