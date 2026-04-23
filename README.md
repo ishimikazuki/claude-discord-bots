@@ -15,6 +15,8 @@ LaunchAgent として常駐運用することを想定しています。
   フォーラムに新スレッドを自動で立ててそこで会話を継続
 - **Attachment passthrough**: 添付ファイルは `_inbox/` に保存して Claude に渡し、
   `_outbox/` に書き出されたファイルは自動で Discord に返信添付
+- **Streaming + idle timeout**: `claude --output-format stream-json` を使い、
+  出力が途絶えた時だけタイムアウト判定。長いタスクでもハングしない限り落ちない
 - **LaunchAgent**: macOS の GUI セッション LaunchAgent として常駐。login
   keychain アクセスが必要な Claude Code OAuth と相性が良い
 
@@ -51,6 +53,8 @@ cp .env.example .env
 - `bots.<name>.control_channel_id`: bot が応答するチャンネル ID (nullable)
 - `notify_channel_id`: 通知用チャンネル ID (nullable)
 - `allowed_users`: Discord user ID の許可リスト（空なら全員許可）
+- `claude_idle_timeout_seconds` (既定 300): 出力が何秒途絶えたら hang とみなすか
+- `claude_hard_timeout_seconds` (既定 3600): 1 セッションの絶対上限
 
 `.env` に Discord bot token を入れるか、macOS keychain に登録：
 
